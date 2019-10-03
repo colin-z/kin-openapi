@@ -8,7 +8,7 @@ import (
 	"io/ioutil"
 	"net/http"
 
-	"github.com/getkin/kin-openapi/openapi3"
+	"github.com/colin-z/kin-openapi/openapi3"
 )
 
 func ValidateResponse(c context.Context, input *ResponseValidationInput) error {

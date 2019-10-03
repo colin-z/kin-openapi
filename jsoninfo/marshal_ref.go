@@ -2,9 +2,15 @@ package jsoninfo
 
 import (
 	"encoding/json"
+	"reflect"
 )
 
 func MarshalRef(value string, otherwise interface{}) ([]byte, error) {
+	if reflect.ValueOf(otherwise).IsNil() {
+		return json.Marshal(&refProps{
+			Ref: value,
+		})
+	}
 	return json.Marshal(otherwise)
 }
 

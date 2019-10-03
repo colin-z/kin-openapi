@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/getkin/kin-openapi/jsoninfo"
+	"github.com/colin-z/kin-openapi/jsoninfo"
 )
 
 type PathItem struct {

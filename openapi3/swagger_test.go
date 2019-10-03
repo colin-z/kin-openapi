@@ -6,7 +6,7 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/getkin/kin-openapi/openapi3"
+	"github.com/colin-z/kin-openapi/openapi3"
 	"github.com/ghodss/yaml"
 	"github.com/stretchr/testify/require"
 )
@@ -23,11 +23,12 @@ func TestRefsJSON(t *testing.T) {
 	docA := &openapi3.Swagger{}
 	err = json.Unmarshal(specJSON, &docA)
 	require.NoError(t, err)
-	require.NotEmpty(t, data)
+	require.NotEmpty(t, docA)
 
 	t.Log("Resolve refs in unmarshalled *openapi3.Swagger")
 	err = loader.ResolveRefsIn(docA, nil)
 	require.NoError(t, err)
+
 	t.Log("Resolve refs in marshalled *openapi3.Swagger")
 	docB, err := loader.LoadSwaggerFromData(data)
 	require.NoError(t, err)
@@ -44,9 +45,7 @@ func TestRefsJSON(t *testing.T) {
 	require.NoError(t, err)
 	dataB, err := json.Marshal(docB)
 	require.NoError(t, err)
-	require.JSONEq(t, string(data), string(specJSON))
-	require.JSONEq(t, string(data), string(dataA))
-	require.JSONEq(t, string(data), string(dataB))
+	require.JSONEq(t, string(dataA), string(dataB))
 }
 
 func TestRefsYAML(t *testing.T) {
@@ -82,9 +81,7 @@ func TestRefsYAML(t *testing.T) {
 	require.NoError(t, err)
 	dataB, err := yaml.Marshal(docB)
 	require.NoError(t, err)
-	eqYAML(t, data, specYAML)
-	eqYAML(t, data, dataA)
-	eqYAML(t, data, dataB)
+	eqYAML(t, dataA, dataB)
 }
 
 func eqYAML(t *testing.T, expected, actual []byte) {

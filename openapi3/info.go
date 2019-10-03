@@ -5,7 +5,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/getkin/kin-openapi/jsoninfo"
+	"github.com/colin-z/kin-openapi/jsoninfo"
 )
 
 // Info is specified by OpenAPI/Swagger standard version 3.0.

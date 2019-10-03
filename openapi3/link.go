@@ -3,7 +3,7 @@ package openapi3
 import (
 	"context"
 
-	"github.com/getkin/kin-openapi/jsoninfo"
+	"github.com/colin-z/kin-openapi/jsoninfo"
 )
 
 // Link is specified by OpenAPI/Swagger standard version 3.0.
